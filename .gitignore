@@ -6,3 +6,6 @@
 
 # Idea
 .idea/
+
+# node
+node_modules/
