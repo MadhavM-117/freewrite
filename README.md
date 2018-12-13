@@ -23,3 +23,10 @@ sudo apt-get install -y libgtk-3-dev \
 source .env/bin/activate
 pip install wxPython
 ```
+
+
+## For Electron UI:
+
+- Using electron with react:
+
+Followed instructions here: [How to build an Electron app using create-react-app](https://medium.freecodecamp.org/building-an-electron-application-with-create-react-app-97945861647c)
