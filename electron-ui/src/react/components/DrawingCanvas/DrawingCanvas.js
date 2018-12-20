@@ -56,6 +56,7 @@ class DrawingCanvas extends React.Component {
         }
 
         this.ctx.lineTo(x, y);
+        this.ctx.stroke();
         console.log('drawing', x, y);
     }
    }
@@ -65,12 +66,11 @@ class DrawingCanvas extends React.Component {
         console.log('ended stroke');
         this.drawing = false;
         this.ctx.closePath();
-        this.ctx.stroke();
         // TODO: currently, drawing only ends when the stroke is complete. 
         // Figure out how to draw as the mouse moves. 
         // 1. Is it possible to draw points/circles instead of line/strokes?
         // 2. There is a scaling issue with the drawing. Coordinates don't correspond to actual coordinates drawn in Canvas. 
-        
+
     }
    }
 
