@@ -4,8 +4,8 @@ import './DrawingCanvas.css';
 
 class DrawingCanvas extends React.Component {
     ctx = null;
-    clickX = [];
-    clickY = [];
+    offsetX = null;
+    offsetY = null;
     drawing = false;
     constructor(props) {
         super(props);
@@ -17,11 +17,17 @@ class DrawingCanvas extends React.Component {
 
     componentDidMount() {
         const canvasRef = this.refs.canvasRef;
+        const boundingBox = canvasRef.getBoundingClientRect();
+        canvasRef.height = canvasRef.clientHeight;
+        canvasRef.width = canvasRef.clientWidth;
+        this.offsetX = boundingBox.left;
+        this.offsetY = boundingBox.top;
         this.ctx = canvasRef.getContext('2d');
         console.log(this.ctx);
         this.ctx.strokeStyle = "#df4b26";
         this.ctx.lineJoin = "round";
         this.ctx.lineWidth = 5;
+        this.ctx.scale(1.00, 1.00);
     }
 
     render() {
@@ -66,18 +72,13 @@ class DrawingCanvas extends React.Component {
         console.log('ended stroke');
         this.drawing = false;
         this.ctx.closePath();
-        // TODO: currently, drawing only ends when the stroke is complete. 
-        // Figure out how to draw as the mouse moves. 
-        // 1. Is it possible to draw points/circles instead of line/strokes?
-        // 2. There is a scaling issue with the drawing. Coordinates don't correspond to actual coordinates drawn in Canvas. 
-
     }
    }
 
    mouseMove(e) {
        const {buttons} = e;
        if (buttons === 1) {
-           this.draw(e.pageX - window.pageXOffset, e.pageY - window.pageYOffset);
+           this.draw(e.clientX - this.offsetX, e.clientY - this.offsetY);
        }
    }
 }
