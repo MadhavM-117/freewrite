@@ -1,8 +1,34 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting started:
+
+To get started on running the UI with react & electron:
+
+1. Install dependencies, if needed:
+
+```
+npm install 
+```
+
+2. Start the React UI:
+
+```
+npm start
+```
+
+3. Once react is running successfully, start electron:
+
+```
+npm run-script electron
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs dependencies required to run the app. 
 
 ### `npm start`
 
